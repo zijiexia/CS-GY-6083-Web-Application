@@ -1,0 +1,61 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="39B40968-7815-27A2-259A-423FB7E2BDDA" name="DISEASE">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:19:29 UTC</createdTime>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="DEID" id="D22512C6-3803-F425-AA3B-4B50003A7B27">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:19:38 UTC</createdTime>
+<commentInRDBMS>Disease unique id</commentInRDBMS>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>6</dataTypePrecision>
+<ownDataTypeParameters>,6,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DNAME" id="63C5CCFB-6D24-2C6D-7AE5-1800F86AC9D3">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:20:21 UTC</createdTime>
+<commentInRDBMS>Disease&apos;s name</commentInRDBMS>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="23F9723E-3A73-CBDA-957E-DBCCDB3FA660" name="DISEASE PK">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:20:05 UTC</createdTime>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>D22512C6-3803-F425-AA3B-4B50003A7B27</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

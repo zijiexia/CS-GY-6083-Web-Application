@@ -1,0 +1,90 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5F5D2270-CDC8-3B04-0561-0F015F58BEA7" name="DEPARTMENT">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 02:41:54 UTC</createdTime>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="DID" id="8C9D953A-A24E-A166-76CB-6016E2E4D5F9">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 02:42:25 UTC</createdTime>
+<commentInRDBMS>Department ID</commentInRDBMS>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DNAME" id="94312019-6BDA-261C-1CE0-569A7596E812">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 02:44:22 UTC</createdTime>
+<commentInRDBMS>Department name</commentInRDBMS>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30</dataTypeSize>
+<ownDataTypeParameters>30,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="DTEL" id="98564EFE-20B0-4E7C-9A6E-549233484C31">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 02:45:29 UTC</createdTime>
+<commentInRDBMS>Department contact number</commentInRDBMS>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>12</dataTypeSize>
+<ownDataTypeParameters>12,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="HID" id="F03FDA7C-AA39-5E9D-63A5-C6E294F116EB">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:22:52 UTC</createdTime>
+<generatorID>4F1F603C-2810-3322-8506-E18B6D6F55B6</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<referedAttribute>11873A31-EC0C-0C66-D1F0-5EA466D4EB26</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="2EA4B0E2-483D-A937-36DF-2CBF2A205D72" name="DEPARTMENT PK">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 02:45:10 UTC</createdTime>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>8C9D953A-A24E-A166-76CB-6016E2E4D5F9</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

@@ -1,0 +1,93 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="25D7F60C-2CAE-BFD3-FBCD-25D710F67E23" name="DEPARTMENT">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:24:31 UTC</createdTime>
+<generatorID>5F5D2270-CDC8-3B04-0561-0F015F58BEA7</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="DID" id="4A8C560C-7212-5D8C-1E0C-999D2C03B84B">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:24:31 UTC</createdTime>
+<commentInRDBMS>Department ID</commentInRDBMS>
+<generatorID>8C9D953A-A24E-A166-76CB-6016E2E4D5F9</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DNAME" id="F75BA560-D2BE-20AD-6753-97CC328889FB">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:24:31 UTC</createdTime>
+<commentInRDBMS>Department name</commentInRDBMS>
+<generatorID>94312019-6BDA-261C-1CE0-569A7596E812</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DTEL" id="81AE5EFE-8B5A-F4F2-49CC-059873E8B2BE">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:24:31 UTC</createdTime>
+<commentInRDBMS>Department contact number</commentInRDBMS>
+<generatorID>98564EFE-20B0-4E7C-9A6E-549233484C31</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>13</dataTypeSize>
+<ownDataTypeParameters>13,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="HID" id="6449FE50-E5A9-6A2D-1E5B-9978E51C63D4">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:24:31 UTC</createdTime>
+<commentInRDBMS>Hospital unique id</commentInRDBMS>
+<generatorID>F03FDA7C-AA39-5E9D-63A5-C6E294F116EB</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4355D9AA-5B3D-6CD4-C2B0-C28CDE0C498B" referredColumn="292033B0-3575-8CF1-9419-C6211DA46A66"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FF05296A-B780-A8E1-8E64-DC118591863E" name="DEPARTMENT_PK">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:24:31 UTC</createdTime>
+<generatorID>2EA4B0E2-483D-A937-36DF-2CBF2A205D72</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4A8C560C-7212-5D8C-1E0C-999D2C03B84B"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5770CFA1-E43E-1743-5A27-E7DB66F351E9" name="DEPARTMENT_HOSPITAL_FK">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:24:31 UTC</createdTime>
+<generatorID>4F1F603C-2810-3322-8506-E18B6D6F55B6</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6449FE50-E5A9-6A2D-1E5B-9978E51C63D4"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

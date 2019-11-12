@@ -1,0 +1,106 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="2E98E2A8-B5FF-2640-FC5B-E3701F23F649" name="PATIENT_TREATMENT">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:15:37 UTC</createdTime>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="TDATE" id="F7B465E6-FCFB-595F-634B-F467F802A521">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:15:49 UTC</createdTime>
+<commentInRDBMS>The date that the patient took the treatment</commentInRDBMS>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TFREQ" id="509E196D-DA24-CF5E-BBDA-92CFF5B94F2E">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:16:36 UTC</createdTime>
+<commentInRDBMS>Frequency that the patient take the treatment</commentInRDBMS>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<ownDataTypeParameters>,1,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TSTATUS" id="52AF20D3-D75C-9F32-D4A3-E20EE80AFCDF">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:17:48 UTC</createdTime>
+<commentInRDBMS>Current status of the patient under this treatment</commentInRDBMS>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT025</logicalDatatype>
+<dataTypeSize>1</dataTypeSize>
+<ownDataTypeParameters>1,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PHID" id="0E6458F8-73F7-5310-9E72-A5EFCA291693">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:23:36 UTC</createdTime>
+<generatorID>973003A2-4797-4297-2257-83F9E36B96C5</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<referedAttribute>6D02020D-49C4-BFEE-B086-0FC76A98464D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>5</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="PID" id="E0BA9B3E-D1C0-294E-B0C7-4476E8023625">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:23:42 UTC</createdTime>
+<generatorID>9D5AE33E-1DD6-54A5-0C00-17DA014F906D</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<referedAttribute>4C50D905-86FD-F7AF-D950-55894475A67F</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>0</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="TID" id="D6CF0A05-5897-6524-977C-5F14DDB0F4C3">
+<createdBy>zijie</createdBy>
+<createdTime>2019-11-12 03:23:58 UTC</createdTime>
+<generatorID>A82D5CB9-C32B-9AF9-1F04-001265F3BDDF</generatorID>
+<ownerDesignName>final_project_2</ownerDesignName>
+<engineerTo>
+<item key="36E9F597-F17D-8638-C57D-686C37877DCE" value="true"/>
+</engineerTo>
+<referedAttribute>53836B38-D855-4BC1-F7D5-50F9B408290E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+</Entity>
