@@ -6,235 +6,196 @@
 
 
 CREATE TABLE department (
-    did     TINYINT NOT NULL COMMENT 'Department ID',
-    dname   VARCHAR(20) NOT NULL COMMENT 'Department name',
-    dtel    VARCHAR(12) NOT NULL COMMENT 'Department contact number',
-    hid     SMALLINT NOT NULL COMMENT 'Hospital unique id'
+    did     NUMBER(2) NOT NULL,
+    dname   VARCHAR2(20) NOT NULL,
+    dtel    VARCHAR2(12) NOT NULL,
+    hid     NUMBER(3) NOT NULL
 );
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN department.did IS
-    'Department ID'; */
+    'Department ID';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN department.dname IS
-    'Department name'; */
+    'Department name';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN department.dtel IS
-    'Department contact number'; */
+    'Department contact number';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN department.hid IS
-    'Hospital unique id'; */
+    'Hospital unique id';
 
 ALTER TABLE department ADD CONSTRAINT department_pk PRIMARY KEY ( did );
 
 CREATE TABLE disease (
-    deid    INT NOT NULL COMMENT 'Disease unique id',
-    dname   VARCHAR(30) NOT NULL COMMENT 'Disease''s name'
+    deid    NUMBER(6) NOT NULL,
+    dname   VARCHAR2(30) NOT NULL
 );
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN disease.deid IS
-    'Disease unique id'; */
+    'Disease unique id';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN disease.dname IS
-    'Disease''s name'; */
+    'Disease''s name';
 
 ALTER TABLE disease ADD CONSTRAINT disease_pk PRIMARY KEY ( deid );
 
 CREATE TABLE hospital (
-    hid           SMALLINT NOT NULL COMMENT 'Hospital unique id',
-    hname         VARCHAR(30) NOT NULL COMMENT 'Name of the hospital',
-    hst_address   VARCHAR(30) NOT NULL COMMENT 'Street where the hospital located',
-    hst_city      VARCHAR(30) NOT NULL COMMENT 'City address of the hospital',
-    hstate        VARCHAR(20) NOT NULL COMMENT 'State of the hospital',
-    hzip          INT NOT NULL COMMENT 'zipcode of the hospital'
+    hid           NUMBER(3) NOT NULL,
+    hname         VARCHAR2(30) NOT NULL,
+    hst_address   VARCHAR2(30) NOT NULL,
+    hst_city      VARCHAR2(30) NOT NULL,
+    hstate        VARCHAR2(20) NOT NULL,
+    hzip          NUMBER(5) NOT NULL
 );
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN hospital.hid IS
-    'Hospital unique id'; */
+    'Hospital unique id';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN hospital.hname IS
-    'Name of the hospital'; */
+    'Name of the hospital';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN hospital.hst_address IS
-    'Street where the hospital located'; */
+    'Street where the hospital located';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN hospital.hst_city IS
-    'City address of the hospital'; */
+    'City address of the hospital';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN hospital.hstate IS
-    'State of the hospital'; */
+    'State of the hospital';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN hospital.hzip IS
-    'zipcode of the hospital'; */
+    'zipcode of the hospital';
 
 ALTER TABLE hospital ADD CONSTRAINT hospital_pk PRIMARY KEY ( hid );
 
 CREATE TABLE patient (
-    pid       BIGINT NOT NULL COMMENT 'Unique patient id',
-    pfname    VARCHAR(30) NOT NULL COMMENT 'Family name of the patient',
-    plname    VARCHAR(20) NOT NULL COMMENT 'Last name of the patient',
-    pgender   CHAR(1) NOT NULL COMMENT 'Gender of the patient',
-    pbd       DATETIME NOT NULL COMMENT 'Patient''s birthday',
-    prace     VARCHAR(20) COMMENT 'Race of the patient',
-    pstatus   CHAR(1) NOT NULL COMMENT 'Patient''s status'
+    pid       NUMBER(9) NOT NULL,
+    pfname    VARCHAR2(30) NOT NULL,
+    plname    VARCHAR2(20) NOT NULL,
+    pgender   CHAR(1) NOT NULL,
+    pbd       DATE NOT NULL,
+    prace     VARCHAR2(20),
+    pstatus   CHAR(1) NOT NULL
 );
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient.pid IS
-    'Unique patient id'; */
+    'Unique patient id';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient.pfname IS
-    'Family name of the patient'; */
+    'Family name of the patient';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient.plname IS
-    'Last name of the patient'; */
+    'Last name of the patient';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient.pgender IS
-    'Gender of the patient'; */
+    'Gender of the patient';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient.pbd IS
-    'Patient''s birthday'; */
+    'Patient''s birthday';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient.prace IS
-    'Race of the patient'; */
+    'Race of the patient';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient.pstatus IS
-    'Patient''s status'; */
+    'Patient''s status';
 
 ALTER TABLE patient ADD CONSTRAINT patient_pk PRIMARY KEY ( pid );
 
 CREATE TABLE patient_treatment (
-    tdate     DATETIME NOT NULL COMMENT 'The date that the patient took the treatment',
-    tfreq     TINYINT NOT NULL COMMENT 'Frequency that the patient take the treatment',
-    tstatus   CHAR(1) COMMENT 'Current status of the patient under this treatment',
-    phid      INT NOT NULL COMMENT 'Physician unique id',
-    pid       BIGINT NOT NULL COMMENT 'Patient unique id',
-    tid       INT NOT NULL COMMENT 'Treatment unique id'
+    tdate     DATE NOT NULL,
+    tfreq     NUMBER(1) NOT NULL,
+    tstatus   CHAR(1),
+    phid      NUMBER(5) NOT NULL,
+    pid       NUMBER(9) NOT NULL,
+    tid       NUMBER(7) NOT NULL
 );
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient_treatment.tdate IS
-    'The date that the patient took the treatment'; */
+    'The date that the patient took the treatment';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient_treatment.tfreq IS
-    'Frequency that the patient take the treatment'; */
+    'Frequency that the patient take the treatment';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient_treatment.tstatus IS
-    'Current status of the patient under this treatment'; */
+    'Current status of the patient under this treatment';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient_treatment.phid IS
-    'Physician unique id'; */
+    'Physician unique id';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient_treatment.pid IS
-    'Patient unique id'; */
+    'Patient unique id';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN patient_treatment.tid IS
-    'Treatment unique id'; */
+    'Treatment unique id';
 
 CREATE TABLE physician (
-    phid      INT NOT NULL COMMENT 'Unique id for the physician ',
-    phfname   VARCHAR(30) NOT NULL COMMENT 'Physician''s family name',
-    phtel     VARCHAR(12) NOT NULL COMMENT 'Physician''s phone number',
-    phspl     VARCHAR(30) NOT NULL COMMENT 'Specialization of the physician',
-    hid       SMALLINT NOT NULL COMMENT 'Hospital unique id'
+    phid      NUMBER(5) NOT NULL,
+    phfname   VARCHAR2(30) NOT NULL,
+    phtel     VARCHAR2(12) NOT NULL,
+    phspl     VARCHAR2(30) NOT NULL,
+    hid       NUMBER(3) NOT NULL
 );
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN physician.phid IS
-    'Unique id for the physician '; */
+    'Unique id for the physician ';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN physician.phfname IS
-    'Physician''s family name'; */
+    'Physician''s family name';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN physician.phtel IS
-    'Physician''s phone number'; */
+    'Physician''s phone number';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN physician.phspl IS
-    'Specialization of the physician'; */
+    'Specialization of the physician';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN physician.hid IS
-    'Hospital unique id'; */
+    'Hospital unique id';
 
 ALTER TABLE physician ADD CONSTRAINT physician_pk PRIMARY KEY ( phid );
 
 CREATE TABLE treatment (
-    tid     INT NOT NULL COMMENT 'Unique treatment id',
-    tname   VARCHAR(50) NOT NULL COMMENT 'Treatment name',
-    ttype   VARCHAR(10) NOT NULL COMMENT 'Treatment type',
-    deid    INT NOT NULL COMMENT 'Foreign key of the disease table'
+    tid     NUMBER(7) NOT NULL,
+    tname   VARCHAR2(50) NOT NULL,
+    ttype   VARCHAR2(10) NOT NULL,
+    deid    NUMBER(6) NOT NULL
 );
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN treatment.tid IS
-    'Unique treatment id'; */
+    'Unique treatment id';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN treatment.tname IS
-    'Treatment name'; */
+    'Treatment name';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN treatment.ttype IS
-    'Treatment type'; */
+    'Treatment type';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN treatment.deid IS
-    'Foreign key of the disease table'; */
+    'Foreign key of the disease table';
 
 ALTER TABLE treatment ADD CONSTRAINT treatment_pk PRIMARY KEY ( tid );
 
 CREATE TABLE users (
-    usid     SMALLINT NOT NULL COMMENT 'User id ',
-    ufname   VARCHAR(20) NOT NULL COMMENT 'User family name',
-    ulname   VARCHAR(20) NOT NULL COMMENT 'Last name of the user',
-    urole    VARCHAR(20) NOT NULL COMMENT 'The role of this user',
-    did      TINYINT NOT NULL COMMENT 'Department unique id'
+    usid     NUMBER(4) NOT NULL,
+    ufname   VARCHAR2(20) NOT NULL,
+    ulname   VARCHAR2(20) NOT NULL,
+    urole    VARCHAR2(20) NOT NULL,
+    did      NUMBER(2) NOT NULL
 );
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN users.usid IS
-    'User id '; */
+    'User id ';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN users.ufname IS
-    'User family name'; */
+    'User family name';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN users.ulname IS
-    'Last name of the user'; */
+    'Last name of the user';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN users.urole IS
-    'The role of this user'; */
+    'The role of this user';
 
-/* Moved to CREATE TABLE
 COMMENT ON COLUMN users.did IS
-    'Department unique id'; */
+    'Department unique id';
 
 ALTER TABLE users ADD CONSTRAINT users_pk PRIMARY KEY ( usid );
 
