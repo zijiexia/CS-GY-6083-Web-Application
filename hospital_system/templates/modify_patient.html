@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="" method="post">
+        <select name="modifyattribute">
+        <option value="pfname">pfn</option>
+        <option value="plname" >pln</option>
+        <option value="pgender" >pgender</option>
+        <option value="pdb" >pbd</option>
+        <option value="prace" >prace</option>
+        <option value="pstatus" >pstatus</option>
+        </select>
+
+        <label for="modifypid">请输入pid</label>
+        <input type="text" name="modifypid" style="width:105px"><br><br>
+        <label for="modifycontent">请输入修改值</label>
+        <input type="text" name="modifycontent" style="width:105px"><br><br>
+
+        <input type="submit">
+    </form>
+{% endblock %}

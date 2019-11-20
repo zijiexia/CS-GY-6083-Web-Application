@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+<form action="" method="post">
+{% block content %}
+    <form action="" method="post">
+        <select name="selectattribute">
+        <option value="pid">pid</option>
+        <option value="pfname">pfn</option>
+        <option value="plname" >pln</option>
+        <option value="pgender" >pgender</option>
+        <option value="pdb" >pbd</option>
+        <option value="prace" >prace</option>
+        <option value="pstatus" >pstatus</option>
+        </select>
+
+        <label for="selectcontent">请输入查找值</label>
+        <input type="text" name="selectcontent" style="width:105px"><br><br>
+
+        <input type="submit">
+    </form>
+{% endblock %}
+</form>

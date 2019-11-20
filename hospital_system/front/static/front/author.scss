@@ -1,0 +1,20 @@
+body{
+  background: deepskyblue;
+}
+
+.mask-wrapper {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+
+    .author-wrapper{
+        width:400px;
+        height:500px;
+        background: #fff;
+    }
+}
+
+
