@@ -15,7 +15,7 @@ Including another URLconf
 """
 
 from django.urls import path,re_path
-from front import views
+from hospital_system import views
 
 urlpatterns = [
     #first page
