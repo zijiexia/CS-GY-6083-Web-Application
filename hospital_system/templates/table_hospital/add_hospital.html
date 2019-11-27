@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td>医院id</td>
+                    <td><input type="text" name="inputhid"></td>
+                </tr>
+                <tr>
+                    <td>医院name</td>
+                    <td><input type="text" name="inputhname"></td>
+                </tr>
+                <tr>
+                    <td>医院hadd</td>
+                    <td><input type="text" name="inputhadd"></td>
+                </tr>
+                <tr>
+                    <td>医院hcity</td>
+                    <td><input type="text" name="inputhcity"></td>
+                </tr>
+                <tr>
+                    <td>医院hstate</td>
+                    <td><input type="text" name="inputhstate"></td>
+                </tr>
+                <tr>
+                    <td>医院zip</td>
+                    <td><input type="text" name="inputhzip"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="submit"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+{% endblock %}

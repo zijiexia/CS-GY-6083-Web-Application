@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<form action="" method="post">
+{% block content %}
+    <form action="" method="post">
+        <select name="selectattribute">
+        <option value="hid">hid</option>
+        <option value="hname">hname</option>
+        <option value="hadd" >h_address</option>
+        <option value="hcity" >h_city</option>
+        <option value="hstate" >h_state</option>
+        <option value="hzipcode" >h_zipcode</option>
+        </select>
+
+        <label for="selectcontent">请输入查找值</label>
+        <input type="text" name="selectcontent" style="width:105px"><br><br>
+
+        <input type="submit">
+    </form>
+{% endblock %}
+</form>

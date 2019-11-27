@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="" method="post">
+        <select name="modifyattribute">
+        <option value="hname">hname</option>
+        <option value="hadd" >h_address</option>
+        <option value="hcity" >h_city</option>
+        <option value="hstate" >h_state</option>
+        <option value="hzip" >h_zipcode</option>
+        </select>
+
+        <label for="modifyhid">请输入hid</label>
+        <input type="text" name="modifyhid" style="width:105px"><br><br>
+        <label for="modifycontent">请输入修改值</label>
+        <input type="text" name="modifycontent" style="width:105px"><br><br>
+
+        <input type="submit">
+    </form>
+{% endblock %}

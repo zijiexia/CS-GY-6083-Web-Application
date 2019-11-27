@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form action="" method="post">
+        <select name="modifyattribute">
+        <option value="ufname">ufn</option>
+        <option value="ulname" >uln</option>
+        <option value="urole" >urole</option>
+        <option value="did" >did</option>
+        </select>
+
+        <label for="modifyusid">请输入usid</label>
+        <input type="text" name="modifyusid" style="width:105px"><br><br>
+        <label for="modifycontent">请输入修改值</label>
+        <input type="text" name="modifycontent" style="width:105px"><br><br>
+
+        <input type="submit">
+    </form>
+{% endblock %}

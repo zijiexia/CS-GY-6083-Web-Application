@@ -10,9 +10,20 @@
     <nav>
         <ul class="nav">
             <li><a href="/">首页</a></li>
+            <li><a href="{% url 'patient_list' %}">病人列表</a></li>
             <li><a href="{% url 'select_patient' %}">查找病人</a></li>
             <li><a href="{% url 'add_patient' %}">添加病人</a></li>
             <li><a href="{% url 'modify_patient' %}">修改病人</a></li>
+
+            <li><a href="{% url 'hospital_list' %}">医院列表</a></li>
+            <li><a href="{% url 'add_hospital' %}">添加医院</a></li>
+            <li><a href="{% url 'modify_hospital' %}">修改医院</a></li>
+            <li><a href="{% url 'select_hospital' %}">查找医院</a></li>
+
+            <li><a href="{% url 'users_list' %}">用户列表</a></li>
+            <li><a href="{% url 'add_users' %}">添加用户</a></li>
+            <li><a href="{% url 'modify_users' %}">修改用户</a></li>
+            <li><a href="{% url 'select_users' %}">查找用户</a></li>
         </ul>
     </nav>
     {% block content %}{% endblock %}

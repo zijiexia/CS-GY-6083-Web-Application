@@ -6,4 +6,4 @@ def index(request):
     rows = cursor.fetchall()
     for row in rows:
         print(row)
-    return render(request,'index.html')
+    return render(request, 'table_patient/patient_list.html')

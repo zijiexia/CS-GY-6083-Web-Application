@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>pid:{{patient.0}}</p>
+    <p>pfname:{{patient.1}}</p>
+    <p>plname:{{patient.2}}</p>
+    <p>pigender:{{patient.3}}</p>
+    <p>pbd:{{patient.4}}</p>
+    <p>prace:{{patient.5}}</p>
+    <p>pstatus:{{patient.6}}</p>
+    <form action="{% url 'delete_patient' %}" method="post">
+        <input type="hidden" name = "pid" value="{{ patient.0}}">
+        <input type="submit" value="delete this record">
+    </form>
+{% endblock %}

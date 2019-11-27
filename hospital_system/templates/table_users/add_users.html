@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td>用户id</td>
+                    <td><input type="text" name="inputusid"></td>
+                </tr>
+                <tr>
+                    <td>用户fname</td>
+                    <td><input type="text" name="inputufname"></td>
+                </tr>
+                <tr>
+                    <td>用户lname</td>
+                    <td><input type="text" name="inputulname"></td>
+                </tr>
+                <tr>
+                    <td>用户role</td>
+                    <td><input type="text" name="inputurole"></td>
+                </tr>
+                <tr>
+                    <td>所在部门id</td>
+                    <td><input type="text" name="inputdid"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="submit"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+{% endblock %}

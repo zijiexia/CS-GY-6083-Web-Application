@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for row in content %}
+        {% for i in row %}
+            <li style="list-style: none">pid:  {{i.0}}</li>
+            <li style="list-style: none">pfname:  {{i.1}}</li>
+            <li style="list-style: none">plname:  {{i.2}}</li>
+            <li style="list-style: none">pgender:  {{i.3}}</li>
+            <li style="list-style: none">pbd:  {{i.4}}</li>
+            <li style="list-style: none">prace:  {{i.5}}</li>
+            <li style="list-style: none">pstatus:  {{i.6}}</li>
+            <li style="list-style: none;height: 20px"></li>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}

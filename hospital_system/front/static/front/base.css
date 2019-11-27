@@ -26,3 +26,15 @@
     color: gold;
 
 }
+
+
+.content{
+    background: #00ccff;
+    height: 65px;
+    overflow: hidden;
+}
+
+
+.content li{
+    color:blue;
+}

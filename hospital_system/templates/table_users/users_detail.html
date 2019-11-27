@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>usid:{{users.0}}</p>
+    <p>ufname:{{users.1}}</p>
+    <p>ulname:{{users.2}}</p>
+    <p>urole:{{users.3}}</p>
+    <p>did:{{users.4}}</p>
+    <form action="{% url 'delete_users' %}" method="post">
+        <input type="hidden" name = "usid" value="{{ users.0}}">
+        <input type="submit" value="delete this record">
+    </form>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+    <table>
+        <thead>
+            <tr>
+                <th>员工id</th>
+                <th>员工fn</th>
+                <th>员工ln</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td><a href="{% url 'users_detail' usid=user.0 %}">{{user.0}}</a></td>
+                    <td>{{user.1}}</td>
+                    <td>{{user.2}}</td>
+                </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+{% endblock %}

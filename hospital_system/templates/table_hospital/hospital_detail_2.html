@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% for row in content %}
+        {% for i in row %}
+            <li style="list-style: none">hid:  {{i.0}}</li>
+            <li style="list-style: none">hname:  {{i.1}}</li>
+            <li style="list-style: none">h_address:  {{i.2}}</li>
+            <li style="list-style: none">h_city:  {{i.3}}</li>
+            <li style="list-style: none">h_state:  {{i.4}}</li>
+            <li style="list-style: none">h_zipcode:  {{i.5}}</li>
+            <li style="list-style: none;height: 20px"></li>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
