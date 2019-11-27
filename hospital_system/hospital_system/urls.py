@@ -19,7 +19,8 @@ from hospital_system import views
 
 urlpatterns = [
     #first page
-    path(route='',view=views.index,name='index' ),
+    path(route='',view=views.index,name='index'),
+    #wrong page
     #patient
     path(route='patient_list',view=views.patient_list,name='patient_list' ),
     path(route='add_patient/',view=views.add_patient, name='add_patient'),
@@ -41,5 +42,4 @@ urlpatterns = [
     path(route='add_users/', view=views.add_users, name='add_users'),
     path(route='modify_users/', view=views.modify_users, name='modify_users'),
     path(route='select_users/', view=views.select_users, name='select_users'),
-
 ]
