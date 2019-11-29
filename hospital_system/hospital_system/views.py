@@ -1,6 +1,61 @@
 from django.shortcuts import render
 from django.db import connection
+
+from django.shortcuts import render,redirect,reverse
+from django.db import connection
+from django.http import HttpResponse
+
+from django.template import loader
+import json
+import pymysql
+
+def get_cursor():
+    return connection.cursor()
+
+# def index(request):
+#     return render(request,'index.html')
+
+#PATIENT
+
+cnx = pymysql.connect(host='localhost',
+                              user='root',
+                              password='Nyuxzj1234',
+                              db='webapp',
+                              charset='utf8mb4',
+                              cursorclass=pymysql.cursors.DictCursor)
+
+
+def run_q(q, arg, fetch=False):
+    cursor = cnx.cursor()
+    try:
+        cursor.execute(q, arg)
+    except Exception as e:
+        print("Exception:",e)
+        raise e
+    
+    if fetch:
+        result = cursor.fetchall()
+    else:
+        result = None
+    cnx.commit()
+    return result
+
+
 def index(request):
+    if request.method == "GET":
+        return render(request, 'mysite/index.html')
+    else:
+        email = request.POST.get('inputEmail')
+        pwd = request.POST.get('inputPassword')
+        query_sql = "SELECT * from account where email = %s and pwd = %s;"
+        t  = (str(email),str(pwd))
+        res = run_q(query_sql,t,True)
+        print("res:",res)
+        return render(request, 'table_patient/patient_list.html')
+
+
+
+def welcome(request):
     cursor = connection.cursor()
     cursor.execute("")
     rows = cursor.fetchall()
@@ -8,19 +63,6 @@ def index(request):
         print(row)
     return render(request, 'table_patient/patient_list.html')
 
-from django.shortcuts import render,redirect,reverse
-from django.db import connection
-from django.http import HttpResponse
-
-def get_cursor():
-    return connection.cursor()
-
-def index(request):
-    return render(request,'index.html')
-
-#添加、修改、查询 存在拼接sql的情况
-
-#PATIENT
 def patient_list(request):
     cursor = get_cursor()
     cursor.execute('select pid,pfname,plname from patient')
