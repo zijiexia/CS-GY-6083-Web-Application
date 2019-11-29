@@ -3,7 +3,7 @@ from django.db import connection
 
 from django.shortcuts import render,redirect,reverse
 from django.db import connection
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 
 from django.template import loader
 import json
@@ -43,25 +43,44 @@ def run_q(q, arg, fetch=False):
 
 def index(request):
     if request.method == "GET":
-        return render(request, 'mysite/index.html')
-    else:
+        return render(request, 'login/login.html')
+    elif request.is_ajax():
+        result = 'success'
+        return HttpResponse(json.dumps(result))
+    elif request.method == "POST":
+        if "signin" in request.POST:
+            email = request.POST.get('inputEmail')
+            pwd = request.POST.get('inputPassword')
+            query_sql = "SELECT * from account where email = %s and pwd = %s;"
+            t  = (str(email),str(pwd))
+            res = run_q(query_sql,t,True)
+            if len(res) == 0:
+                return render(request, 'login/login.html', context={'msg':"Your email doesn't match the password, please try again"})
+            print(request.body)
+            return render(request, 'welcome.html')
+
+
+def log_create(request):
+    if request.method == "GET":
+        return render(request, 'login/logcreate.html')
+    elif request.method == "POST":
         email = request.POST.get('inputEmail')
         pwd = request.POST.get('inputPassword')
-        query_sql = "SELECT * from account where email = %s and pwd = %s;"
+        query_sql = "INSERT INTO account VALUES(%s, %s)"
         t  = (str(email),str(pwd))
-        res = run_q(query_sql,t,True)
-        print("res:",res)
-        return render(request, 'table_patient/patient_list.html')
+        run_q(query_sql, t)
+        return render(request, 'login/login.html')
 
 
 
-def welcome(request):
-    cursor = connection.cursor()
-    cursor.execute("")
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
-    return render(request, 'table_patient/patient_list.html')
+
+# def welcome(request):
+#     cursor = connection.cursor()
+#     cursor.execute("")
+#     rows = cursor.fetchall()
+#     for row in rows:
+#         print(row)
+#     return render(request, 'table_patient/patient_list.html')
 
 def patient_list(request):
     cursor = get_cursor()

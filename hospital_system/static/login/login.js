@@ -1,7 +1,17 @@
 $(document).ready(function() {
 
+    // $("#log_create" ).click(function() {
+    //     alert("success")
+    //     $.ajax({
+    //         type: "POST",                
+    //         dataType : "json",
+    //         url: "",
+    //         contentType: "application/json; charset=utf-8",
+    //         data : JSON.stringify({"log_create":True, "csrfmiddlewaretoken": $('[name="csrfmiddlewaretoken"]').val()})
+    //     });
+    // });
 
-    $("#signin" ).click(function() {
+    $("#log_create" ).click(function() {
         var user_email_text = $("#inputEmail").val();
         var user_pwd_text = $("#inputPassword").val();
         console.log(user_email_text);
@@ -20,22 +30,26 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",                
             dataType : "json",
+            // url: "",
             contentType: "application/json; charset=utf-8",
-            data : JSON.stringify({"email":user_email_text,"pwd":user_pwd_text}),
+            data : JSON.stringify({"email":user_email_text,
+                                    "pwd":user_pwd_text, 
+                                    "type":"log_create", 
+                                    'csrfmiddlewaretoken':$('[name="csrfmiddlewaretoken"]').val()}),
             success: function(result){
                 if(result == "success"){
-                    window.location.href = "/query_page";
+                    window.location.href = "/log_create";
                 }
                 else{
                     $("#msg").text("Your account doesn't match the password, please try again or your account is not exist");
                 }
             },
-            error: function(request, status, error){
-                console.log("Error");
-                console.log(request)
-                console.log(status)
-                console.log(error)
-            }
+        //     error: function(request, status, error){
+        //         console.log("Error");
+        //         console.log(request)
+        //         console.log(status)
+        //         console.log(error)
+        //     }
         });
 
 

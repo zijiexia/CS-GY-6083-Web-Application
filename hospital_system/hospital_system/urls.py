@@ -20,6 +20,7 @@ from hospital_system import views
 urlpatterns = [
     #first page
     path(route='',view=views.index,name='index'),
+    path(route='log_create', view=views.log_create, name='log_create'),
     #wrong page
     #patient
     path(route='patient_list',view=views.patient_list,name='patient_list' ),
