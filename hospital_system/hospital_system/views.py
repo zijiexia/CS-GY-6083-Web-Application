@@ -118,8 +118,8 @@ def delete_patient(request):
         sql = "delete from patient where pid =%s "
         try:
             cursor.execute(sql,(pid,))
-        except Exception as e:
-            return render(request, 'table_patient/patient_detail.html', context={'msg':str(e)})
+        except:
+            return render(request, 'table_patient/patient_detail.html', context={'msg':"Cannot delete this record"})
         return redirect(reverse('patient_list'))
     else:
         raise RuntimeError("error in deletion of patient!")
@@ -190,8 +190,8 @@ def delete_hospital(request):
         sql = "delete from hospital where hid =%s; "
         try:
             cursor.execute(sql,(hid,))
-        except Exception as e:
-            return render(request, 'table_hospital/hospital_detail.html', context={'msg':str(e)})
+        except:
+            return render(request, 'table_hospital/hospital_detail.html', context={'msg':"Cannot delete this record"})
         return redirect(reverse('hospital_list'))
     else:
         raise RuntimeError("error in deletion of hospital!")
@@ -272,8 +272,8 @@ def delete_users(request):
         sql = "delete from users where usid =%s;"
         try:
             cursor.execute(sql,(usid,))
-        except Exception as e:
-            return render(request, 'table_users/users_detail.html', context={'msg':str(e)})
+        except:
+            return render(request, 'table_users/users_detail.html', context={'msg':"Cannot delete this record"})
         return redirect(reverse('users_list'))
     else:
         raise RuntimeError("error in deletion of users!")
