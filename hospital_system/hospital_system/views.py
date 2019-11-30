@@ -92,21 +92,21 @@ def add_patient(request):
         inputpln = request.POST.get('inputpln')
         inputpgender = request.POST.get('inputpgender')
         inputpbd = request.POST.get('inputpbd')
-        print(inputpbd)
         inputprace = request.POST.get('inputprace')
         inputpstatus = request.POST.get('inputpstatus')
-        cursor = get_cursor()
-        sql = "insert into patient(pid,pfname,plname,pgender,pbd,prace,pstatus) values('%s','%s','%s','%s','0000-00-00 00:00:00','%s','%s')"
-        cursor.execute(sql%(inputpid,inputpfn,inputpln,inputpgender,inputprace,inputpstatus))
-        sql1 = "update patient set pbd = cast(substring('%s fdas',1,19) as datetime) where pid='%s'"
-        cursor.execute(sql1%(inputpbd,inputpid))
+        query_sql = "insert into patient(pid,pfname,plname,pgender,pbd,prace,pstatus) values(%s,%s,%s,%s, STR_TO_DATE(%s,'%%Y-%%m-%%d'),%s,%s);"
+        t = (str(inputpid),str(inputpfn),str(inputpln),str(inputpgender),str(inputpbd), str(inputprace),str(inputpstatus))
+        try:
+            run_q(query_sql, t)
+        except:
+            return render(request, 'table_patient/add_patient.html', context={'msg':"Add Patient Error, patient ID already exists"})
         return redirect(reverse('patient_list'))
 
 
 def patient_detail(request,pid):
     cursor = get_cursor()
     sql = "select * from patient where pid = %s"
-    cursor.execute(sql,(pid,))
+    cursor.execute(sql,(str(pid),))
     patient = cursor.fetchone()
     return render(request, 'table_patient/patient_detail.html', context={'patient': patient})
 
@@ -116,7 +116,10 @@ def delete_patient(request):
         pid = request.POST.get('pid')
         cursor = get_cursor()
         sql = "delete from patient where pid =%s "
-        cursor.execute(sql,(pid,))
+        try:
+            cursor.execute(sql,(pid,))
+        except Exception as e:
+            return render(request, 'table_patient/patient_detail.html', context={'msg':str(e)})
         return redirect(reverse('patient_list'))
     else:
         raise RuntimeError("error in deletion of patient!")
@@ -131,12 +134,19 @@ def modify_patient(request):
         modifyattribute = request.POST.get('modifyattribute')
         cursor = get_cursor()
         if modifyattribute != "pdb":
-            sql = "update patient set %s='%s' where pid='%s'"
-            cursor.execute(sql%(modifyattribute,modifycontent,modifypid))
+            sql = "update patient set %s=%s where pid=%s;"
+            try:
+                cursor.execute(sql%(modifyattribute,modifycontent,modifypid))
+            except Exception as e:
+                return render(request, 'table_patient/modify_patient.html', context={'msg':str(e)})
             return redirect(reverse('patient_list'))
         else:
-            sql = "update patient set pbd=cast(substring('%s fdas',1,19) as datetime) where pid='%s'"
-            cursor.execute(sql%(modifycontent,modifypid))
+            sql = "update patient set pbd=STR_TO_DATE(%s,'%%Y-%%m-%%d') where pid=%s;"
+            t = (modifycontent,modifypid)
+            try:
+                run_q(sql, t)
+            except Exception as e:
+                return render(request, 'table_patient/modify_patient.html', context={'msg':str(e)})
             return redirect(reverse('patient_list'))
 
 
@@ -148,9 +158,11 @@ def select_patient(request):
         selectcontent = request.POST.get('selectcontent')
         selectattribute = request.POST.get('selectattribute')
         cursor = get_cursor()
-        sql = "select * from patient where %s='%s'"
+        sql = "select * from patient where %s=%s;"
         cursor.execute(sql%(selectattribute,selectcontent))
         rows = cursor.fetchall()
+        if len(rows) == 0:
+            return render(request, 'table_patient/select_patient.html', context={'msg':"Do not exists"})
         content.append(rows)
         return render(request, 'table_patient/patient_detail_2.html', context={'content':content})
 
@@ -175,8 +187,11 @@ def delete_hospital(request):
     if request.method == 'POST':
         hid = request.POST.get('hid')
         cursor = get_cursor()
-        sql = "delete from hospital where hid =%s "
-        cursor.execute(sql,(hid,))
+        sql = "delete from hospital where hid =%s; "
+        try:
+            cursor.execute(sql,(hid,))
+        except Exception as e:
+            return render(request, 'table_hospital/hospital_detail.html', context={'msg':str(e)})
         return redirect(reverse('hospital_list'))
     else:
         raise RuntimeError("error in deletion of hospital!")
@@ -192,9 +207,12 @@ def add_hospital(request):
         inputhcity = request.POST.get('inputhcity')
         inputhstate = request.POST.get('inputhstate')
         inputhzip = request.POST.get('inputhzip')
-        cursor = get_cursor()
-        sql = "insert into hospital(hid,hname,hst_address,hst_city,hstate,hzip) values('%s','%s','%s','%s','%s','%s')"
-        cursor.execute(sql%(inputhid,inputhname,inputhadd,inputhcity,inputhstate,inputhzip))
+        sql = "insert into hospital(hid,hname,hst_address,hst_city,hstate,hzip) values(%s,%s,%s,%s,%s,%s);"
+        t = (str(inputhid),inputhname,inputhadd,inputhcity,inputhstate,str(inputhzip))
+        try:
+            run_q(sql, t)
+        except:
+            return render(request, 'table_hospital/add_hospital.html', context={'msg': "Add hospital error, hospital ID already exists!"})
         return redirect(reverse('hospital_list'))
 
 
@@ -207,7 +225,10 @@ def modify_hospital(request):
         modifyattribute = request.POST.get('modifyattribute')
         cursor = get_cursor()
         sql = "update hospital set %s='%s' where hid='%s'"
-        cursor.execute(sql%(modifyattribute,modifycontent,modifyhid))
+        try:
+            cursor.execute(sql%(modifyattribute,modifycontent,modifyhid))
+        except Exception as e:
+            return render(request, 'table_hospital/modify_hospital.html', context={'msg':str(e)})
         return redirect(reverse('hospital_list'))
 
 
@@ -219,9 +240,11 @@ def select_hospital(request):
         selectcontent = request.POST.get('selectcontent')
         selectattribute = request.POST.get('selectattribute')
         cursor = get_cursor()
-        sql = "select * from hospital where %s='%s'"
+        sql = "select * from hospital where %s=%s"
         cursor.execute(sql%(selectattribute,selectcontent))
         rows = cursor.fetchall()
+        if len(rows) == 0:
+            return render(request, 'table_hospital/select_hospital.html', context={'msg':"Do not exists"})
         content.append(rows)
         return render(request, 'table_hospital/hospital_detail_2.html', context={'content':content})
 
@@ -246,8 +269,11 @@ def delete_users(request):
     if request.method == 'POST':
         usid = request.POST.get('usid')
         cursor = get_cursor()
-        sql = "delete from users where usid =%s "
-        cursor.execute(sql,(usid,))
+        sql = "delete from users where usid =%s;"
+        try:
+            cursor.execute(sql,(usid,))
+        except Exception as e:
+            return render(request, 'table_users/users_detail.html', context={'msg':str(e)})
         return redirect(reverse('users_list'))
     else:
         raise RuntimeError("error in deletion of users!")
@@ -262,9 +288,12 @@ def add_users(request):
         inputulname = request.POST.get('inputulname')
         inputurole = request.POST.get('inputurole')
         inputdid = request.POST.get('inputdid')
-        cursor = get_cursor()
-        sql = "insert into users(usid,ufname,ulname,urole,did) values('%s','%s','%s','%s','%s')"
-        cursor.execute(sql%(inputusid,inputufname,inputulname,inputurole,inputdid))
+        sql = "insert into users(usid,ufname,ulname,urole,did) values(%s,%s,%s,%s,%s);"
+        t = (str(inputusid),inputufname,inputulname,inputurole,str(inputdid))
+        try:
+            run_q(sql, t)
+        except:
+            return render(request, 'table_users/add_users.html', context={'msg':"Add User Error"})
         return redirect(reverse('users_list'))
 
 
@@ -277,7 +306,10 @@ def modify_users(request):
         modifyattribute = request.POST.get('modifyattribute')
         cursor = get_cursor()
         sql = "update users set %s='%s' where usid='%s'"
-        cursor.execute(sql%(modifyattribute,modifycontent,modifyusid))
+        try:
+            cursor.execute(sql%(modifyattribute,modifycontent,modifyusid))
+        except Exception as e:
+            return render(request, 'table_users/modify_users.html', context={'msg':str(e)})
         return redirect(reverse('users_list'))
 
 
@@ -292,5 +324,7 @@ def select_users(request):
         sql = "select * from users where %s='%s'"
         cursor.execute(sql%(selectattribute,selectcontent))
         rows = cursor.fetchall()
+        if rows == 0:
+            return render(request, 'table_users/select_users.html', context="Do not exists")
         content.append(rows)
         return render(request, 'table_users/users_detail_2.html', context={'content':content})
