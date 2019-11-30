@@ -3,7 +3,18 @@
 --   site:      Oracle Database 12cR2
 --   type:      Oracle Database 12cR2
 
+CREATE DATABASE IF NOT EXISTS F196083B;
 
+USE F196083B;
+
+CREATE TABLE account(
+    email  VARCHAR(30) NOT NULL,
+    pwd    VARCHAR(30) NOT NULL
+);
+
+ALTER TABLE account ADD CONSTRAINT account_pk PRIMARY KEY ( email );
+
+INSERT INTO account VALUES('test@nyu.edu', '1234');
 
 CREATE TABLE department (
     did     TINYINT(2) NOT NULL,
@@ -85,7 +96,7 @@ CREATE TABLE patient (
     pfname    VARCHAR(30) NOT NULL,
     plname    VARCHAR(20) NOT NULL,
     pgender   CHAR(1) NOT NULL,
-    pbd       DATETIME NOT NULL,
+    pbd       DATE NOT NULL,
     prace     VARCHAR(20),
     pstatus   CHAR(1) NOT NULL
 );
@@ -121,7 +132,7 @@ COMMENT ON COLUMN patient.pstatus IS
 ALTER TABLE patient ADD CONSTRAINT patient_pk PRIMARY KEY ( pid );
 
 CREATE TABLE patient_treatment (
-    tdate     DATETIME NOT NULL,
+    tdate     DATE NOT NULL,
     tfreq     TINYINT(1) NOT NULL,
     tstatus   CHAR(1),
     phid      INT(5) NOT NULL,
