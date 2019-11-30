@@ -8,7 +8,10 @@
           <label for="inputPassword" class="sr-only">Password</label>
           <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
           <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" id="submit">submit</button>
-          <p class="mt-5 mb-3 text-muted">Author: Zijie Xia &amp; Zihao Wang</p> 
+          <div class="line">
+              <!-- <span id="msg"></span> -->
+              <p style="color:red;">{{msg}}</p>
+          </div>
         </form>
     </body>
 {% endblock %}

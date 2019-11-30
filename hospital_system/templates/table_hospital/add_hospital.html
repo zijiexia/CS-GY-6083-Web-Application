@@ -1,38 +1,37 @@
 {% extends 'base.html' %}
-
 {% block content %}
-    <form action="" method="post">
-        <table>
-            <tbody>
-                <tr>
-                    <td>医院id</td>
-                    <td><input type="number" required name="inputhid" maxlength="3" minlength="3"></td>
-                </tr>
-                <tr>
-                    <td>医院name</td>
-                    <td><input type="text" required name="inputhname" maxlength="30"></td>
-                </tr>
-                <tr>
-                    <td>医院hadd</td>
-                    <td><input type="text" required name="inputhadd"  maxlength="30"></td>
-                </tr>
-                <tr>
-                    <td>医院hcity</td>
-                    <td><input type="text" required name="inputhcity" maxlength="30"></td>
-                </tr>
-                <tr>
-                    <td>医院hstate</td>
-                    <td><input type="text" required name="inputhstate"  maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>医院zip</td>
-                    <td><input type="number" maxlength="5" minlength="5" required name="inputhzip"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" required value="submit"></td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
+    <body class="text-center">
+            <form class="form-addhospital" action="#" method="post">{% csrf_token %}
+            <h1 class="h3 mb-3 font-weight-normal">Add New Hospital</h1>
+            <div class="hid">
+                <label for="inputhid" style="display: none;">Hospital ID</label>
+                <input type="text" name="inputhid" id="inputhid" class="form-control" placeholder="Hospital ID" required autofocus maxlength="3" minlength="3">
+            </div>
+            <div class="hname">
+                <label for="inputhname" class="sr-only">Hospital Name</label>
+                <input type="text" name="inputhname" id="inputhname" class="form-control" placeholder="Hospital Name" required maxlength="30">
+            </div>
+            <div class="hadd">
+                <label for="inputhadd" class="sr-only">Street Address</label>
+                <input type="text" name="inputhadd" id="inputhadd" class="form-control" placeholder="Street Address" required maxlength="30">
+            </div>
+            <div class="city">
+                <label for="inputhcity" class="sr-only">City</label>
+                <input type="text" name="inputhcity" id="inputhcity" class="form-control" placeholder="City" required maxlength="30">
+            </div>
+            <div class="state">
+                <label for="inputhstate" class="sr-only">State</label>
+                <input type="text" name="inputhstate" id="inputhstate" class="form-control" placeholder="State" required maxlength="20">
+            </div>
+            <div class="zipcode">
+                <label for="inputhzip" class="sr-only">Zipcode</label>
+                <input type="text" name="inputhzip" id="inputhzip" class="form-control" required placeholder="Zipcode" maxlength="5" minlength="5">
+            </div>
+            <br/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="signin" id="signin">Submit</button>
+              <div class="line">
+                  <p style="color:red;">{{msg}}</p>
+              </div>
+          </form>
+      </body>
 {% endblock %}

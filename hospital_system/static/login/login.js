@@ -1,32 +1,10 @@
 $(document).ready(function() {
 
-    // $("#log_create" ).click(function() {
-    //     alert("success")
-    //     $.ajax({
-    //         type: "POST",                
-    //         dataType : "json",
-    //         url: "",
-    //         contentType: "application/json; charset=utf-8",
-    //         data : JSON.stringify({"log_create":True, "csrfmiddlewaretoken": $('[name="csrfmiddlewaretoken"]').val()})
-    //     });
-    // });
 
     $("#log_create" ).click(function() {
         var user_email_text = $("#inputEmail").val();
         var user_pwd_text = $("#inputPassword").val();
-        console.log(user_email_text);
-        console.log(user_pwd_text);
-        // if( user_email_text.length == 0 ){
-        //     alert("Your acct input is invalid");
-        //     $("#user_pwd").clear();
-        //     $("#user_acct").clear();
-        // }
-        // if( user_pwd_text.length == 0 ){
-        //     alert("Your acct pwd is invalid");
-        //     $("#user_pwd").clear();
-        //     $("#user_acct").clear();
-        // }
-
+        
         $.ajax({
             type: "POST",                
             dataType : "json",
@@ -44,12 +22,12 @@ $(document).ready(function() {
                     $("#msg").text("Your account doesn't match the password, please try again or your account is not exist");
                 }
             },
-        //     error: function(request, status, error){
-        //         console.log("Error");
-        //         console.log(request)
-        //         console.log(status)
-        //         console.log(error)
-        //     }
+            error: function(request, status, error){
+                console.log("Error");
+                console.log(request)
+                console.log(status)
+                console.log(error)
+            }
         });
 
 

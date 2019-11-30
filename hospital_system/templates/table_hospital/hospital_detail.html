@@ -1,14 +1,37 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>hid:{{hospital.0}}</p>
-    <p>hname:{{hospital.1}}</p>
-    <p>hst_address:{{hospital.2}}</p>
-    <p>hst_city:{{hospital.3}}</p>
-    <p>hstate:{{hospital.4}}</p>
-    <p>hzip:{{hospital.5}}</p>
-    <form action="{% url 'delete_hospital' %}" method="post">
-        <input type="hidden" name = "hid" value="{{ hospital.0}}">
-        <input type="submit" value="delete this record">
-    </form>
+    <div class="hospital-detail">
+            <div class="jumbotron text-center">
+                <h2>Hospital Detail</h2>
+            </div>         
+            <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                <th>Hospital ID</th>
+                <th>Hospital Name</th>
+                <th>Hospital Street Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{hospital.0}}</td>
+                    <td>{{hospital.1}}</td>
+                    <td>{{hospital.2}}</td>
+                    <td>{{hospital.3}}</td>
+                    <td>{{hospital.4}}</td>
+                    <td>{{hospital.5}}</td>
+                </tr>
+            </tbody>
+            </table>
+            <!-- <form action="{% url 'delete_hospital' %}" method="post">
+                    <input type="hidden" name = "hid" value="{{ hospital.0}}">
+                    <input type="submit" value="delete this record">
+                </form> -->
+    </div>
+
 {% endblock %}
+

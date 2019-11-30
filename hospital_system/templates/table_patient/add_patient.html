@@ -1,42 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="" method="post">
-        <table>
-            <tbody>
-                <tr>
-                    <td>病人id</td>
-                    <td><input type="number" required  name="inputpid"  maxlength="9"  minlength="9"></td>
-                </tr>
-                <tr>
-                    <td>病人fn</td>
-                    <td><input type="text" required name="inputpfn"  maxlength="30"></td>
-                </tr>
-                <tr>
-                    <td>病人ln</td>
-                    <td><input type="text" required name="inputpln" maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>病人gender</td>
-                    <td><input type="text" required name="inputpgender" maxlength="1" minlength="1"></td>
-                </tr>
-                <tr>
-                    <td>病人pbd YYYY-MM-DD HH:MM:SS</td>
-                    <td><input type="text" required name="inputpbd"></td>
-                </tr>
-                <tr>
-                    <td>病人race</td>
-                    <td><input type="text" name="inputprace" maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>病人status</td>
-                    <td><input type="text" required name="inputpstatus" maxlength="1"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="submit"></td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
+<body class="text-center">
+    <form class="form-addhospital" action="#" method="post">{% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal">Add New Patient</h1>
+        <div class="hid">
+            <label for="inputpid" style="display: none;">Patient ID</label>
+            <input type="text" name="inputpid"  maxlength="9"  minlength="9" id="inputpid" class="form-control" placeholder="Patient ID" required autofocus >
+        </div>
+        <div class="pfn">
+            <label for="inputinputpfn" class="sr-only">Patient Family Name</label>
+            <input type="text" name="inputinputpfn" id="inputinputpfn" class="form-control" placeholder="Patient Family Name" required maxlength="30">
+        </div>
+        <div class="pln">
+            <label for="inputpln" class="sr-only">Patient Last Name</label>
+            <input type="text" name="inputpln" id="inputpln" class="form-control" placeholder="Patient Last Name" required maxlength="20">
+        </div>
+        <div class="gender">
+            <label for="inputpgender" class="sr-only">Gender</label>
+            <input type="text" name="inputpgender" id="inputpgender" class="form-control" placeholder="Patient Gender (F/M)" required maxlength="1" minlength="1">
+        </div>
+        <div class="birthday">
+            <label for="inputpbd" class="sr-only" style="display: contents;">Patient's Birthday</label>
+            <input type="date" name="inputpbd" id="inputpbd" class="form-control">
+        </div>
+        <div class="race">
+            <label for="inputprace" class="sr-only">Patient Race</label>
+            <input type="text" name="inputprace" id="inputprace" class="form-control" placeholder="Patient Race" maxlength="20">
+        </div>
+        <div class="status">
+                <label for="inputpstatus" class="sr-only">Patient Status</label>
+                <input type="text" name="inputpstatus" id="inputpstatus" class="form-control" required placeholder="Patient Status (M/W/S)" maxlength="1" minlength="1">
+            </div>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="signin" id="signin">Submit</button>
+            <div class="line">
+                <p style="color:red;">{{msg}}</p>
+            </div>
+</form>
+</body>
 {% endblock %}

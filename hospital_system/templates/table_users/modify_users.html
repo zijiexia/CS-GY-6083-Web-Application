@@ -1,18 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form action="" method="post">
-        <select name="modifyattribute">
-        <option value="ufname">ufn</option>
-        <option value="ulname" >uln</option>
-        <option value="urole" >urole</option>
-        <option value="did" >did</option>
-        </select>
-
-        <label for="modifyusid">请输入usid</label>
-        <input type="number" maxlength="4" minlength="4" name="modifyusid" required style="width:105px"><br><br>
-        <label for="modifycontent">请输入修改值</label>
-        <input type="text" name="modifycontent" required style="width:105px"><br><br>
-
-        <input type="submit">
-    </form>
+<form class="form-addhospital" action="#" method="post">{% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal">Modify User Info</h1>
+        <label for="modifyusid" class="sr-only">User ID</label>
+            <input type="text" name="modifyusid" id="modifyusid" required placeholder="User ID" minlength="4" maxlength="4">
+        <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+                <select name="modifyattribute">
+                    <option value="ufname">ufn</option>
+                    <option value="ulname" >uln</option>
+                    <option value="urole" >urole</option>
+                    <option value="did" >did</option>
+                </select>
+            </div>
+            <label for="modifycontent" style="display: none;">Modified Value</label>
+            <input type="text" name="modifycontent" id="modifycontent" required placeholder="Modified Value" >
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" id="submit">Submit</button>
+        
+        <div class="line">
+            <!-- <span id="msg"></span> -->
+            <p style="color:red;">{{msg}}</p>
+        </div> 
+</form>
 {% endblock %}

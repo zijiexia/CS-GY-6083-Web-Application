@@ -1,11 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-    <table>
+<div class="patient-list">
+        <div class="jumbotron text-center">
+                <h2>Patient List</h2>
+        </div>         
+        <table class="table table-hover table-striped">
         <thead>
             <tr>
-                <th>病人id</th>
-                <th>病人fn</th>
-                <th>病人ln</th>
+            <th>Patient ID</th>
+            <th>Patient Family Name</th>
+            <th>Patient Last Name</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +20,7 @@
                     <td>{{patient.2}}</td>
                 </tr>
             {% endfor %}
-
         </tbody>
-    </table>
+        </table>
+</div>
 {% endblock %}

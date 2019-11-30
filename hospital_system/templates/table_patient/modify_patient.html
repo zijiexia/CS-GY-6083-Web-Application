@@ -1,20 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-    <form action="" method="post">
-        <select name="modifyattribute">
-        <option value="pfname">pfn</option>
-        <option value="plname" >pln</option>
-        <option value="pgender" >pgender</option>
-        <option value="pdb" >pbd</option>
-        <option value="prace" >prace</option>
-        <option value="pstatus" >pstatus</option>
-        </select>
-
-        <label for="modifypid">请输入pid</label>
-        <input type="number" name="modifypid" required style="width:105px" minlength="9" maxlength="9"><br><br>
-        <label for="modifycontent">请输入修改值</label>
-        <input type="text" name="modifycontent" required style="width:105px"><br><br>
-
-        <input type="submit">
-    </form>
+<form class="form-addhospital" action="#" method="post">{% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal">Modify Patient Info</h1>
+        <label for="modifypid" class="sr-only">Patient ID</label>
+            <input type="text" name="modifypid" id="modifypid" required placeholder="User ID" minlength="4" maxlength="4">
+        <div class="input-group mt-3 mb-3">
+            <div class="input-group-prepend">
+                    <select name="modifyattribute">
+                        <option value="pfname">pfn</option>
+                        <option value="plname" >pln</option>
+                        <option value="pgender" >pgender</option>
+                        <option value="pdb" >pbd</option>
+                        <option value="prace" >prace</option>
+                        <option value="pstatus" >pstatus</option>
+                    </select>
+            </div>
+            <label for="modifycontent" style="display: none;">Modified Value</label>
+            <input type="text" name="modifycontent" id="modifycontent" required placeholder="Modified Value" >
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" id="submit">Submit</button>
+        
+        <div class="line">
+            <!-- <span id="msg"></span> -->
+            <p style="color:red;">{{msg}}</p>
+        </div> 
+</form>
 {% endblock %}

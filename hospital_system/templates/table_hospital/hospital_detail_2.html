@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    {% for row in content %}
+    <!-- {% for row in content %}
         {% for i in row %}
             <li style="list-style: none">hid:  {{i.0}}</li>
             <li style="list-style: none">hname:  {{i.1}}</li>
@@ -10,5 +10,36 @@
             <li style="list-style: none">h_zipcode:  {{i.5}}</li>
             <li style="list-style: none;height: 20px"></li>
         {% endfor %}
-    {% endfor %}
+    {% endfor %} -->
+    <div class="hospital-detail_2">
+            <div class="jumbotron text-center">
+                    <h2>Hospital Detail</h2>
+                </div>         
+            <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                <th>Hospital ID</th>
+                <th>Hospital Name</th>
+                <th>Hospital Street Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in content %}
+                    {% for i in row %}
+                        <tr>
+                            <td>{{i.0}}</td>
+                            <td>{{i.1}}</td>
+                            <td>{{i.2}}</td>
+                            <td>{{i.3}}</td>
+                            <td>{{i.4}}</td>
+                            <td>{{i.5}}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+            </table>
+    </div>
 {% endblock %}

@@ -1,34 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form action="" method="post">
-        <table>
-            <tbody>
-                <tr>
-                    <td>用户id</td>
-                    <td><input type="number" required name="inputusid" maxlength="4" minlength="4"></td>
-                </tr>
-                <tr>
-                    <td>用户fname</td>
-                    <td><input type="text" required name="inputufname" maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>用户lname</td>
-                    <td><input type="text" required name="inputulname" maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>用户role</td>
-                    <td><input type="text" required name="inputurole" maxlength="20"></td>
-                </tr>
-                <tr>
-                    <td>所在部门id</td>
-                    <td><input type="number" required name="inputdid" maxlength="2" minlength="2"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="submit"></td>
-                </tr>
-            </tbody>
-        </table>
-    </form>
+    <body class="text-center">
+            <form class="form-addhospital" action="#" method="post">{% csrf_token %}
+            <h1 class="h3 mb-3 font-weight-normal">Add New User</h1>
+            <div class="uid">
+                <label for="inputusid" style="display: none;">User ID</label>
+                <input type="text" name="inputusid"  maxlength="4"  minlength="4" id="inputusid" class="form-control" placeholder="User ID" required autofocus >
+            </div>
+            <div class="ufn">
+                <label for="inputufname" class="sr-only">User Family Name</label>
+                <input type="text" name="inputufname" id="inputufname" class="form-control" placeholder="User Family Name" required maxlength="20">
+            </div>
+            <div class="uln">
+                <label for="inputulname" class="sr-only">User Last Name</label>
+                <input type="text" name="inputulname" id="inputulname" class="form-control" placeholder="User Last Name" required maxlength="20">
+            </div>
+            <div class="role">
+                <label for="inputurole" class="sr-only">User Role</label>
+                <input type="text" name="inputurole" id="inputurole" class="form-control" placeholder="User's Role" required maxlength="20">
+            </div>
+            <div class="department">
+                <label for="inputdid" class="sr-only" style="display: none;">User's Department</label>
+                <input type="text" name="inputdid" id="inputdid" class="form-control" maxlength="2" minlength="2" placeholder="User's Department ID">
+            </div>
+            <br/>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" name="signin" id="signin">Submit</button>
+              <div class="line">
+                  <p style="color:red;">{{msg}}</p>
+              </div>
+          </form>
+      </body>
 {% endblock %}

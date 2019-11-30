@@ -21,6 +21,7 @@ urlpatterns = [
     #first page
     path(route='',view=views.index,name='index'),
     path(route='log_create', view=views.log_create, name='log_create'),
+    path(route='welcome', view=views.welcome, name='welcome'),
     #wrong page
     #patient
     path(route='patient_list',view=views.patient_list,name='patient_list' ),

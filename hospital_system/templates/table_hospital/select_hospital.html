@@ -1,20 +1,21 @@
 {% extends 'base.html' %}
-<form action="" method="post">
 {% block content %}
-    <form action="" method="post">
-        <select name="selectattribute">
+<form class="form-search" action="#" method="post">{% csrf_token %}
+    <h1 class="h3 mb-3 font-weight-normal">Search Hospital Information</h1>
+    <select name="selectattribute">
         <option value="hid">hid</option>
         <option value="hname">hname</option>
         <option value="hadd" >h_address</option>
         <option value="hcity" >h_city</option>
         <option value="hstate" >h_state</option>
         <option value="hzipcode" >h_zipcode</option>
-        </select>
-
-        <label for="selectcontent">请输入查找值</label>
-        <input type="text" name="selectcontent" required style="width:105px"><br><br>
-
-        <input type="submit">
-    </form>
-{% endblock %}
+    </select>
+    <label for="selectcontent" style="display: none;">Search Value</label>
+    <input type="text" name="selectcontent" id="selectcontent" required placeholder="Select Value" >
+    <button class="btn btn-lg btn-primary btn-block" type="submit" name="submit" id="submit">Submit</button>   
+    <div class="line">
+        <!-- <span id="msg"></span> -->
+        <p style="color:red;">{{msg}}</p>
+    </div> 
 </form>
+{% endblock %}

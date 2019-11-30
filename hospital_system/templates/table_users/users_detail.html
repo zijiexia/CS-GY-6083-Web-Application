@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <p>usid:{{users.0}}</p>
+    <!-- <p>usid:{{users.0}}</p>
     <p>ufname:{{users.1}}</p>
     <p>ulname:{{users.2}}</p>
     <p>urole:{{users.3}}</p>
@@ -9,5 +9,34 @@
     <form action="{% url 'delete_users' %}" method="post">
         <input type="hidden" name = "usid" value="{{ users.0}}">
         <input type="submit" value="delete this record">
-    </form>
+    </form> -->
+    <div class="user-detail">
+            <div class="jumbotron text-center">
+                <h2>User Detail</h2>
+            </div>         
+            <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>User Family Name</th>
+                    <th>User Last Name</th>
+                    <th>User Role</th>
+                    <th>User Department ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{users.0}}</td>
+                    <td>{{users.1}}</td>
+                    <td>{{users.2}}</td>
+                    <td>{{users.3}}</td>
+                    <td>{{users.4}}</td>
+                </tr>
+            </tbody>
+            </table>
+            <!-- <form action="{% url 'delete_hospital' %}" method="post">
+                    <input type="hidden" name = "hid" value="{{ hospital.0}}">
+                    <input type="submit" value="delete this record">
+                </form> -->
+    </div>
 {% endblock %}

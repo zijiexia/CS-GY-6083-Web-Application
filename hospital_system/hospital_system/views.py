@@ -9,13 +9,10 @@ from django.template import loader
 import json
 import pymysql
 
+
 def get_cursor():
     return connection.cursor()
 
-# def index(request):
-#     return render(request,'index.html')
-
-#PATIENT
 
 cnx = pymysql.connect(host='localhost',
                               user='root',
@@ -56,7 +53,6 @@ def index(request):
             res = run_q(query_sql,t,True)
             if len(res) == 0:
                 return render(request, 'login/login.html', context={'msg':"Your email doesn't match the password, please try again"})
-            print(request.body)
             return render(request, 'welcome.html')
 
 
@@ -68,20 +64,18 @@ def log_create(request):
         pwd = request.POST.get('inputPassword')
         query_sql = "INSERT INTO account VALUES(%s, %s)"
         t  = (str(email),str(pwd))
-        run_q(query_sql, t)
-        return render(request, 'login/login.html')
+        try:
+            run_q(query_sql, t)
+        except:
+            return render(request, 'login/logcreate.html', context={'msg':"Your account already exists"})
+        return redirect(reverse('index'))
 
 
+def welcome(request):
+    return render(request, 'welcome.html')
 
 
-# def welcome(request):
-#     cursor = connection.cursor()
-#     cursor.execute("")
-#     rows = cursor.fetchall()
-#     for row in rows:
-#         print(row)
-#     return render(request, 'table_patient/patient_list.html')
-
+#PATIENT
 def patient_list(request):
     cursor = get_cursor()
     cursor.execute('select pid,pfname,plname from patient')
@@ -98,6 +92,7 @@ def add_patient(request):
         inputpln = request.POST.get('inputpln')
         inputpgender = request.POST.get('inputpgender')
         inputpbd = request.POST.get('inputpbd')
+        print(inputpbd)
         inputprace = request.POST.get('inputprace')
         inputpstatus = request.POST.get('inputpstatus')
         cursor = get_cursor()
@@ -105,7 +100,7 @@ def add_patient(request):
         cursor.execute(sql%(inputpid,inputpfn,inputpln,inputpgender,inputprace,inputpstatus))
         sql1 = "update patient set pbd = cast(substring('%s fdas',1,19) as datetime) where pid='%s'"
         cursor.execute(sql1%(inputpbd,inputpid))
-        return redirect(reverse('index'))
+        return redirect(reverse('patient_list'))
 
 
 def patient_detail(request,pid):
@@ -122,7 +117,7 @@ def delete_patient(request):
         cursor = get_cursor()
         sql = "delete from patient where pid =%s "
         cursor.execute(sql,(pid,))
-        return redirect(reverse('index'))
+        return redirect(reverse('patient_list'))
     else:
         raise RuntimeError("error in deletion of patient!")
 
@@ -138,11 +133,12 @@ def modify_patient(request):
         if modifyattribute != "pdb":
             sql = "update patient set %s='%s' where pid='%s'"
             cursor.execute(sql%(modifyattribute,modifycontent,modifypid))
-            return redirect(reverse('index'))
+            return redirect(reverse('patient_list'))
         else:
             sql = "update patient set pbd=cast(substring('%s fdas',1,19) as datetime) where pid='%s'"
             cursor.execute(sql%(modifycontent,modifypid))
-            return redirect(reverse('index'))
+            return redirect(reverse('patient_list'))
+
 
 def select_patient(request):
     if request.method == 'GET':
@@ -181,7 +177,7 @@ def delete_hospital(request):
         cursor = get_cursor()
         sql = "delete from hospital where hid =%s "
         cursor.execute(sql,(hid,))
-        return redirect(reverse('index'))
+        return redirect(reverse('hospital_list'))
     else:
         raise RuntimeError("error in deletion of hospital!")
 
@@ -199,7 +195,7 @@ def add_hospital(request):
         cursor = get_cursor()
         sql = "insert into hospital(hid,hname,hst_address,hst_city,hstate,hzip) values('%s','%s','%s','%s','%s','%s')"
         cursor.execute(sql%(inputhid,inputhname,inputhadd,inputhcity,inputhstate,inputhzip))
-        return redirect(reverse('index'))
+        return redirect(reverse('hospital_list'))
 
 
 def modify_hospital(request):
@@ -212,7 +208,7 @@ def modify_hospital(request):
         cursor = get_cursor()
         sql = "update hospital set %s='%s' where hid='%s'"
         cursor.execute(sql%(modifyattribute,modifycontent,modifyhid))
-        return redirect(reverse('index'))
+        return redirect(reverse('hospital_list'))
 
 
 def select_hospital(request):
@@ -237,6 +233,7 @@ def users_list(request):
     users = cursor.fetchall()
     return render(request, 'table_users/users_list.html', context={'users':users})
 
+
 def users_detail(request,usid):
     cursor = get_cursor()
     sql = "select * from users where usid = %s"
@@ -244,13 +241,14 @@ def users_detail(request,usid):
     users = cursor.fetchone()
     return render(request, 'table_users/users_detail.html', context={'users': users})
 
+
 def delete_users(request):
     if request.method == 'POST':
         usid = request.POST.get('usid')
         cursor = get_cursor()
         sql = "delete from users where usid =%s "
         cursor.execute(sql,(usid,))
-        return redirect(reverse('index'))
+        return redirect(reverse('users_list'))
     else:
         raise RuntimeError("error in deletion of users!")
 
@@ -267,7 +265,8 @@ def add_users(request):
         cursor = get_cursor()
         sql = "insert into users(usid,ufname,ulname,urole,did) values('%s','%s','%s','%s','%s')"
         cursor.execute(sql%(inputusid,inputufname,inputulname,inputurole,inputdid))
-        return redirect(reverse('index'))
+        return redirect(reverse('users_list'))
+
 
 def modify_users(request):
     if request.method == 'GET':
@@ -279,7 +278,8 @@ def modify_users(request):
         cursor = get_cursor()
         sql = "update users set %s='%s' where usid='%s'"
         cursor.execute(sql%(modifyattribute,modifycontent,modifyusid))
-        return redirect(reverse('index'))
+        return redirect(reverse('users_list'))
+
 
 def select_users(request):
     if request.method == 'GET':
